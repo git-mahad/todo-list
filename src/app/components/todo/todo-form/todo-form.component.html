@@ -1,0 +1,48 @@
+<div class="todo-form-container">
+  <div class="todo-form-card">
+    <h3>Create New Todo</h3>
+    
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            id="description"
+            formControlName="description"
+            class="form-control"
+            [class.error]="todoForm.get('description')?.invalid && todoForm.get('description')?.touched"
+            placeholder="Enter todo description"
+          >
+          <div *ngIf="todoForm.get('description')?.invalid && todoForm.get('description')?.touched" class="error-message">
+            <span *ngIf="todoForm.get('description')?.errors?.['required']">Description is required</span>
+            <span *ngIf="todoForm.get('description')?.errors?.['minlength']">Description must be at least 3 characters</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="targetDate">Target Date</label>
+          <input
+            type="date"
+            id="targetDate"
+            formControlName="targetDate"
+            class="form-control"
+            [class.error]="todoForm.get('targetDate')?.invalid && todoForm.get('targetDate')?.touched"
+          >
+          <div *ngIf="todoForm.get('targetDate')?.invalid && todoForm.get('targetDate')?.touched" class="error-message">
+            <span *ngIf="todoForm.get('targetDate')?.errors?.['required']">Target date is required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">
+          Cancel
+        </button>
+        <button type="submit" class="btn btn-primary" [disabled]="todoForm.invalid">
+          Create Todo
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
