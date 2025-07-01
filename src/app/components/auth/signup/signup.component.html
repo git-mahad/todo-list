@@ -8,22 +8,6 @@
 
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="auth-form">
       <div class="form-group">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          formControlName="username"
-          class="form-control"
-          [class.error]="signupForm.get('username')?.invalid && signupForm.get('username')?.touched"
-          placeholder="Enter your username"
-        >
-        <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched" class="error-message">
-          <span *ngIf="signupForm.get('username')?.errors?.['required']">Username is required</span>
-          <span *ngIf="signupForm.get('username')?.errors?.['minlength']">Username must be at least 3 characters</span>
-        </div>
-      </div>
-
-      <div class="form-group">
         <label for="email">Email</label>
         <input
           type="email"
@@ -55,22 +39,6 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          formControlName="confirmPassword"
-          class="form-control"
-          [class.error]="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched"
-          placeholder="Confirm your password"
-        >
-        <div *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched" class="error-message">
-          <span *ngIf="signupForm.get('confirmPassword')?.errors?.['required']">Please confirm your password</span>
-          <span *ngIf="signupForm.get('confirmPassword')?.errors?.['passwordMismatch']">Passwords do not match</span>
-        </div>
-      </div>
-
       <div *ngIf="errorMessage" class="alert alert-error">
         {{ errorMessage }}
       </div>
@@ -87,7 +55,7 @@
 
     <div class="auth-footer">
       <p>Already have an account? 
-        <a href="#" (click)="goToLogin()" class="link">Sign in</a>
+        <a href="http://localhost:4200/login" (click)="goToLogin()" class="link">Sign in</a>
       </p>
     </div>
   </div>

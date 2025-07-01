@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/todos']);
+      // this.router.navigate(['/todos']);
     }
   }
 
@@ -51,7 +51,7 @@ export class SignupComponent implements OnInit {
       
       const { confirmPassword, ...signupData } = this.signupForm.value;
       
-      this.authService.signup(signupData).subscribe({
+      this.authService.register(signupData).subscribe({
         next: (response) => {
           this.isLoading = false;
           this.router.navigate(['/login']);
